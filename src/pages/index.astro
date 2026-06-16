@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const APP_NAME = 'SnapID';
+
+const countries = [
+  'USA', 'Canada', 'UK', 'Australia', 'Schengen', 'India',
+  'China', 'Japan', 'South Korea', 'Brazil', 'Mexico', 'Russia',
+  'Taiwan', 'Finland (Print)', 'Finland (Digital)',
+];
+
+const features = [
+  { icon: 'crop', title: 'Precise Cropping', desc: 'Country-specific crop guides show exactly where your face must be positioned.' },
+  { icon: 'scissors', title: 'AI Background Removal', desc: 'Remove any background and replace with clean white — runs entirely in your browser.' },
+  { icon: 'printer', title: 'Print-Ready Sheet', desc: 'Download a 4×6 inch sheet with multiple copies tiled, ready to take to a print shop.' },
+  { icon: 'shield', title: 'Privacy First', desc: 'Your photos never leave your device. All processing happens locally.' },
+  { icon: 'globe', title: '15 Country Formats', desc: 'Correct dimensions and face-height guidelines for every supported country.' },
+  { icon: 'zap', title: 'Instant & Free', desc: 'No sign-up, no watermarks, no hidden fees. Just upload and download.' },
+];
+---
+<Layout title="Free ID Photo Maker Online">
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-indigo-50 to-blue-100 py-20 px-4">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1 space-y-6">
+        <h1 class="text-5xl font-bold tracking-tight">
+          <span class="text-indigo-600">{APP_NAME}</span> — ID Photo Maker
+        </h1>
+        <p class="text-xl text-gray-600">
+          Create compliant passport and ID photos in seconds, right from your browser.
+          Free, private, no sign-up required.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/editor" class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors shadow">
+            Start Editing
+          </a>
+          <a href="/remove-background" class="px-6 py-3 border-2 border-indigo-600 text-indigo-600 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
+            Remove Background
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-4 text-sm text-gray-600 pt-2">
+          {['Instant Processing', '100% Free', 'No Sign-Up', 'No Watermarks'].map(t => (
+            <span class="flex items-center gap-1">
+              <svg class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <div class="bg-white rounded-2xl shadow-2xl p-4 w-72">
+          <div class="bg-gray-100 rounded-xl aspect-[35/45] flex items-center justify-center text-gray-400">
+            <svg class="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="mt-3 text-center text-xs text-gray-500">Preview — USA 2×2 inch</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-16 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold">How It Works</h2>
+        <p class="text-gray-500 mt-2">Three simple steps to your perfect ID photo</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          { n: '1', title: 'Upload Photo', desc: 'Upload any portrait photo. Optionally remove the background first.' },
+          { n: '2', title: 'Crop & Adjust', desc: 'Pan and zoom to fit your face within the country-specific guide ovals.' },
+          { n: '3', title: 'Download', desc: 'Get a single photo or a print-ready 4×6 sheet with multiple copies.' },
+        ].map(s => (
+          <div class="bg-white rounded-xl shadow p-6 text-center hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">{s.n}</div>
+            <h3 class="font-semibold text-lg mb-2">{s.title}</h3>
+            <p class="text-gray-500 text-sm">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold">Powerful Features</h2>
+        <p class="text-gray-500 mt-2">Everything you need for a compliant ID or passport photo</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map(f => (
+          <div class="rounded-xl border p-6 hover:border-indigo-400 transition-colors">
+            <div class="w-9 h-9 bg-indigo-100 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3 class="font-semibold mb-1">{f.title}</h3>
+            <p class="text-gray-500 text-sm">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Countries -->
+  <section class="py-16 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-3">Supported Countries</h2>
+      <p class="text-gray-500 mb-8">Correct dimensions and face guidelines for every country</p>
+      <div class="flex flex-wrap justify-center gap-2">
+        {countries.map(c => (
+          <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">{c}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-4 bg-gradient-to-r from-indigo-600 to-blue-600">
+    <div class="max-w-3xl mx-auto text-center text-white">
+      <h2 class="text-3xl font-bold mb-3">Ready to create your ID photo?</h2>
+      <p class="text-indigo-100 mb-6">It only takes a minute to get a professional result.</p>
+      <a href="/editor" class="inline-block px-8 py-3 bg-white text-indigo-700 font-semibold rounded-lg hover:bg-indigo-50 transition-colors shadow">
+        Start Editing — It's Free
+      </a>
+    </div>
+  </section>
+</Layout>

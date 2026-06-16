@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EditorPage from '../components/EditorPage';
+---
+<Layout title="Passport Photo Editor" description="Crop your photo to exact passport dimensions with country-specific face guidelines.">
+  <EditorPage client:only="react" />
+</Layout>
